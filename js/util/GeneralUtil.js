@@ -270,7 +270,7 @@ define(['jquery'], function ($) {
         radio: {
             FILE_SERVER: 'http://f141.uunfs.com/',
             SUFFIX: '.mp3',
-            swfPath: "/tpl/plugin/jplayer",
+            swfPath: "/uuwatch_requirejs/plugin/jplayer",
             radio_f: function (a) {
                 return this.radio_i((a % (1000 * 1000 * 1000 * 10)) / (1000 * 1000 * 10)) + '/' + this.radio_i(a / 10000) + '/' + this.radio_i((a % 10000) / 10) + '/' + this.radio_i((a % 10));
             },
@@ -283,7 +283,7 @@ define(['jquery'], function ($) {
                 $("#jquery_jplayer_" + id).jPlayer({
                     ready: function () {
                         $(this).jPlayer("setMedia", {
-                            mp3: self.FILE_SERVER + self.radio_f(code) + self.SUFFIX,
+                            mp3: self.FILE_SERVER + self.radio_f(code) + self.SUFFIX
                         });
                     },
                     cssSelectorAncestor: "#jp_container_" + id,

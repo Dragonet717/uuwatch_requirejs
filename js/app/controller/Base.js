@@ -1,8 +1,10 @@
-define(['jquery', 'jPlayer', 'hbs', 'hbsUtil', 'generalUtil', 'text!/tpl/tpl/tpl.html'], function ($, jPlayer, hbs, hbsUtil, gUtil, html) {
+define(['jquery', 'jPlayer', 'hbs', 'hbsUtil', 'generalUtil', 'text!list'], function ($, jPlayer, hbs, hbsUtil, gUtil, html) {
     function controllerBase() {
     }
 
     controllerBase.prototype = {
+        APP_PREFIX: 'http://una.uuwatch.com/info/',
+        MODULE_MONITOR: 'monitor/',
         setModel: function (model) {
             this.model = model;
         },
@@ -40,6 +42,11 @@ define(['jquery', 'jPlayer', 'hbs', 'hbsUtil', 'generalUtil', 'text!/tpl/tpl/tpl
         },
         addEvent: function () {
             var self = this;
+
+            /** 电视图片&播放按钮事件绑定 */
+            $('.tv-play').bind('click', function() {self.playTV(this);});
+
+            /** 底部标签事件绑定 */
             /** 标记正负面 */
             $('.news-emotion').bind('click', function() {self.del(this);});
             /** 分享新闻 */
@@ -55,10 +62,11 @@ define(['jquery', 'jPlayer', 'hbs', 'hbsUtil', 'generalUtil', 'text!/tpl/tpl/tpl
             /** 删除新闻 */
             $('.c_btn_remove').bind('click', function () {self.del(this);});
         },
-        APP_PREFIX: 'http://una.uuwatch.com/info/',
-        MODULE_MONITOR: 'monitor/',
         getNewsItem: function (obj) {
             return $("#" +$(obj).closest('.news').attr('id')).data($(obj).closest('.news').attr('id'));
+        },
+        playTV: function(obj) {
+            (new gUtil()).tv.play(this.getNewsItem(obj).id);
         },
         /**
          * 删除新闻

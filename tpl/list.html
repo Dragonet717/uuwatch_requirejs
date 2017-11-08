@@ -14,11 +14,11 @@
             {{#ifTvOrRadio media}}
             <div class="news-player" id="player_{{id}}">
                 {{#ifTV media}}
-                <div id="play_img_{{id}}" class="flv-img"><a href="javascript:;"><img
+                <div id="play_img_{{id}}" class="flv-img"><a class="tv-play" href="javascript:;"><img
                         src="" alt="" id="img_{{id}}"></a></div>
                 <div id="emb_{{id}}" class="player hidden"></div>
                 <div class="play-btn">
-                    <div class="icons_bg play"><a href="javascript:;">播放</a></div>
+                    <div class="icons_bg play"><a class="tv-play" href="javascript:;">播放</a></div>
                     <div class="icons_bg download"><a href="javascript:;">下载</a></div>
                 </div>
                 {{/ifTV}}
